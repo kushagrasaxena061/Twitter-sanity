@@ -20,6 +20,6 @@ export default async function handler(
 ){
     const {tweetId} = req.query
     const comments: Comment[] = await sanityClient.fetch(commentQuery,{tweetId:tweetId})
-    //console.log(comments)
+    console.log(comments)
     res.status(200).json(comments)    
 }

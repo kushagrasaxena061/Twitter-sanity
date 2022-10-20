@@ -27,11 +27,13 @@ export default function TweetBox({setTweets}:Props) {
     
     const postTweet = async () => {
         const tweetBody: TweetBody = {
-            text:input,
-            username: "kushagrasaxena",
-            profileImg: session?.user?.image || "https://pbs.twimg.com/profile_images/1524397902159912967/G2SCGT79_bigger.jpg",
-            image:image
-        }
+          text: input,
+          username: session?.user?.name,
+          profileImg:
+            session?.user?.image ||
+            "https://pbs.twimg.com/profile_images/1524397902159912967/G2SCGT79_bigger.jpg",
+          image: image,
+        };
         const result = await fetch(`/api/addTweet`,{
             body: JSON.stringify(tweetBody), method:"POST"
         })
@@ -54,7 +56,7 @@ export default function TweetBox({setTweets}:Props) {
     <div className="flex space-x-2 p-5">
       <img
         className="h-14 w-14 object-cover rounded-full mt-4"
-        src="https://pbs.twimg.com/profile_images/1524397902159912967/G2SCGT79_bigger.jpg"
+        src="https://links.papareact.com/gll"
         alt="no photo tweetbox"
       />
       <div className="flex flex-1 items-center pl-2 ">
@@ -79,7 +81,7 @@ export default function TweetBox({setTweets}:Props) {
               <LocationMarkerIcon className="h-5 w-5 cursor-pointer transition-transformm duration-150 ease-out hover:scale-150" />
             </div>
             <button
-              onClick={handleSubmit}
+                onClick={handleSubmit}
               disabled={!input}
               className="bg-[#00ADED] px-5 py-2 font-bold disabled:opacity-40 text-white rounded-full"
             >

@@ -1,22 +1,14 @@
-import React, { useRef,Dispatch,MouseEvent,SetStateAction,useState } from 'react'
+import React, { useRef,useState } from 'react'
 import {CalendarIcon,EmojiHappyIcon,LocationMarkerIcon,PhotographIcon,SearchCircleIcon} from "@heroicons/react/outline"
 import {useSession} from "next-auth/react"
-import {Tweet,TweetBody} from "../typings"
-import { fetchTweets } from "../utils/fetchTweets";
-import toast from "react-hot-toast";
 
 
-interface Props{
-    setTweets: Dispatch<SetStateAction<Tweet[]>>
-}
 
-export default function TweetBox({setTweets}:Props) {
+export default function TweetBox() {
     const [input,setInput] = useState<string>("")
     const [image,setImage] = useState<string>("")
     const imageInputRef = useRef<HTMLInputElement>(null)
-    const {data:session} = useSession()
     const [imageUrlBoxIsOpen,setImageUrlBoxIsOpen] = useState<boolean>(false)
-    
     const addImageToTweet = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         if (!imageInputRef.current?.value) return;
@@ -24,37 +16,29 @@ export default function TweetBox({setTweets}:Props) {
         imageInputRef.current.value="";
         setImageUrlBoxIsOpen(false)
     };
-    
     const postTweet = async () => {
         const tweetBody: TweetBody = {
             text:input,
-            username: "kushagrasaxena",
-            profileImg: session?.user?.image || "https://pbs.twimg.com/profile_images/1524397902159912967/G2SCGT79_bigger.jpg",
+            username:session?.user?.name || 'Unknown User',
+            profileImg:session?.user?.image || "https://links.papareact.com/gll",
             image:image
         }
         const result = await fetch(`/api/addTweet`,{
             body: JSON.stringify(tweetBody), method:"POST"
         })
         const json = await result.json()
-        const newTweets = await fetchTweets()
-        setTweets(newTweets)
-        toast("Tweet Posted")
-        return json
     }
     const handleSubmit = (
-      e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+      e: React.MouseEvent<HTMLButtonElement, globalThisMouseEvent>
     ) => {
         e.preventDefault()
         postTweet()
-        setInput("")
-        setImage("")
-        setImageUrlBoxIsOpen(false)
     };
   return (
     <div className="flex space-x-2 p-5">
       <img
         className="h-14 w-14 object-cover rounded-full mt-4"
-        src="https://pbs.twimg.com/profile_images/1524397902159912967/G2SCGT79_bigger.jpg"
+        src="https://links.papareact.com/gll"
         alt="no photo tweetbox"
       />
       <div className="flex flex-1 items-center pl-2 ">
@@ -79,7 +63,7 @@ export default function TweetBox({setTweets}:Props) {
               <LocationMarkerIcon className="h-5 w-5 cursor-pointer transition-transformm duration-150 ease-out hover:scale-150" />
             </div>
             <button
-              onClick={handleSubmit}
+                onClick={handleSubmit}
               disabled={!input}
               className="bg-[#00ADED] px-5 py-2 font-bold disabled:opacity-40 text-white rounded-full"
             >
@@ -95,7 +79,7 @@ export default function TweetBox({setTweets}:Props) {
                 placeholder="Enter Image URL..."
               />
               <button
-                onClick={addImageToTweet}
+                onClick={(e) => addImageToTweet}
                 type="submit"
                 className="font-bold text-white"
               >

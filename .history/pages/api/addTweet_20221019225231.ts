@@ -1,6 +1,6 @@
 import type { NextApiRequest,NextApiResponse } from "next";
 import {sanityClient} from "../../sanity.js"
-import {Tweet} from "../../typings"
+import {TweetBody} from "../../typings"
 import {groq} from "next-sanity"
 import {Comment} from "../../typings"
 
@@ -18,8 +18,9 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ){
-    const {tweetId} = req.query
+    const data : TweetBody = JSON.parse(req.body)
+    
     const comments: Comment[] = await sanityClient.fetch(commentQuery,{tweetId:tweetId})
-    //console.log(comments)
+    console.log(comments)
     res.status(200).json(comments)    
 }
