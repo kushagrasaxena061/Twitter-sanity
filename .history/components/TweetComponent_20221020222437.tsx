@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React , {useState,useEffect} from "react";
 import { Comment,Tweet } from "../typings";
 import TimeAgo from "react-timeago";
 import {ChatAlt2Icon,HeartIcon,SwitchHorizontalIcon,UploadIcon} from "@heroicons/react/outline"
@@ -18,10 +18,6 @@ function TweetComponent({ tweet }: Props) {
     const comments : Comment[] = await fetchComments(tweet._id)
     setComments(comments)
   }
-
-  const handleSubmit = (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
-    e.preventDefault();
-  };
   
   useEffect(() => {
     refreshComments()
@@ -75,7 +71,7 @@ function TweetComponent({ tweet }: Props) {
         </div>
       </div>
       {commentBoxVisible && (
-        <form onClick={handleSubmit} className="mt-3 flex space-x-3">
+        <form className="mt-3 flex space-x-3">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -83,13 +79,7 @@ function TweetComponent({ tweet }: Props) {
             className="placeholder:text-white text-white flex-1 rounded-lg bg-gray-900 p-2 outline-none"
             placeholder="Write a comment..."
           />
-          <button
-            disabled={!input}
-            type="submit"
-            className="text-[#00ADED] disabled:text-blue-200 "
-          >
-            Post
-          </button>
+          <button className="text-[#00ADED] disabled:text-blue-200 ">Post</button>
         </form>
       )}
       {comments?.length > 0 && (

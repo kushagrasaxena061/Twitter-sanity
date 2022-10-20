@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React , {useState,useEffect} from "react";
 import { Comment,Tweet } from "../typings";
 import TimeAgo from "react-timeago";
 import {ChatAlt2Icon,HeartIcon,SwitchHorizontalIcon,UploadIcon} from "@heroicons/react/outline"
 import {fetchComments} from "../utils/fetchComments"
+
 
 interface Props {
   tweet: Tweet;
@@ -11,6 +12,7 @@ interface Props {
 function TweetComponent({ tweet }: Props) {
   const [commentBoxVisible,setCommentBoxVisible] = useState<boolean>(false)
   const [input,setInput] = useState<string>("")
+  const {data:session} = useSession()
   
   const [comments,setComments] = useState<Comment[]>([])
   
@@ -18,10 +20,6 @@ function TweetComponent({ tweet }: Props) {
     const comments : Comment[] = await fetchComments(tweet._id)
     setComments(comments)
   }
-
-  const handleSubmit = (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
-    e.preventDefault();
-  };
   
   useEffect(() => {
     refreshComments()
@@ -58,7 +56,7 @@ function TweetComponent({ tweet }: Props) {
       </div>
       <div className="flex justify-between mt-5 ">
         <div
-          onClick={() => setCommentBoxVisible(!commentBoxVisible)}
+          onClick={() => session && setCommentBoxVisible(!commentBoxVisible)}
           className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400"
         >
           <ChatAlt2Icon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
@@ -75,7 +73,7 @@ function TweetComponent({ tweet }: Props) {
         </div>
       </div>
       {commentBoxVisible && (
-        <form onClick={handleSubmit} className="mt-3 flex space-x-3">
+        <form className="mt-3 flex space-x-3">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -83,13 +81,7 @@ function TweetComponent({ tweet }: Props) {
             className="placeholder:text-white text-white flex-1 rounded-lg bg-gray-900 p-2 outline-none"
             placeholder="Write a comment..."
           />
-          <button
-            disabled={!input}
-            type="submit"
-            className="text-[#00ADED] disabled:text-blue-200 "
-          >
-            Post
-          </button>
+          <button className="text-[#00ADED] disabled:text-blue-200 ">Post</button>
         </form>
       )}
       {comments?.length > 0 && (

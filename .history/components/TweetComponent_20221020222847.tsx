@@ -19,9 +19,9 @@ function TweetComponent({ tweet }: Props) {
     setComments(comments)
   }
 
-  const handleSubmit = (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
-    e.preventDefault();
-  };
+  const handleSubmit = (e: React.FormEvent<HTMLFormELement>) => {
+
+  }
   
   useEffect(() => {
     refreshComments()
