@@ -17,14 +17,12 @@ export default function TweetBox({setTweets}:Props) {
     const {data:session} = useSession()
     const [imageUrlBoxIsOpen,setImageUrlBoxIsOpen] = useState<boolean>(false)
     
-    const addImageToTweet = (
-      e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
-    ) => {
-      e.preventDefault();
-      if (!imageInputRef.current?.value) return;
-      setImage(imageInputRef.current.value);
-      imageInputRef.current.value = "";
-      setImageUrlBoxIsOpen(false);
+    const addImageToTweet = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault()
+        if (!imageInputRef.current?.value) return;
+        setImage(imageInputRef.current.value);
+        imageInputRef.current.value="";
+        setImageUrlBoxIsOpen(false)
     };
     
     const postTweet = async () => {

@@ -17,14 +17,12 @@ export default function TweetBox({setTweets}:Props) {
     const {data:session} = useSession()
     const [imageUrlBoxIsOpen,setImageUrlBoxIsOpen] = useState<boolean>(false)
     
-    const addImageToTweet = (
-      e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
-    ) => {
-      e.preventDefault();
-      if (!imageInputRef.current?.value) return;
-      setImage(imageInputRef.current.value);
-      imageInputRef.current.value = "";
-      setImageUrlBoxIsOpen(false);
+    const addImageToTweet = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault()
+        if (!imageInputRef.current?.value) return;
+        setImage(imageInputRef.current.value);
+        imageInputRef.current.value="";
+        setImageUrlBoxIsOpen(false)
     };
     
     const postTweet = async () => {
@@ -81,7 +79,7 @@ export default function TweetBox({setTweets}:Props) {
               <LocationMarkerIcon className="h-5 w-5 cursor-pointer transition-transformm duration-150 ease-out hover:scale-150" />
             </div>
             <button
-              onClick={handleSubmit}
+              onClick={addImageToTweet}
               disabled={!input}
               className="bg-[#00ADED] px-5 py-2 font-bold disabled:opacity-40 text-white rounded-full"
             >
