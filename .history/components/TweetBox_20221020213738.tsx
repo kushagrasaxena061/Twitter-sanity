@@ -65,7 +65,7 @@ export default function TweetBox({setTweets}:Props) {
             ref={imageInputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="h-24 bg-black text-white w-full text-xl outline-none placeholder:text:xl"
+            className="h-24 bg-black w-full text-xl outline-none placeholder:text:xl"
             type="text"
             placeholder="What's Happening?"
           />
@@ -89,7 +89,7 @@ export default function TweetBox({setTweets}:Props) {
             </button>
           </div>
           {imageUrlBoxIsOpen && (
-            <form className="mt-5 flex rounded-lg bg-[#00ADED]/80 py-2 px-4">
+            <form className="mt-5 flex text-white rounded-lg bg-[#00ADED]/80 py-2 px-4">
               <input
                 ref={imageInputRef}
                 className="flex-1 bg-transparent p-2 text-blue-100 outline-none placeholder:text-blue-200"

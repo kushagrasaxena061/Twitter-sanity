@@ -51,19 +51,19 @@ function TweetComponent({ tweet }: Props) {
           )}
         </div>
       </div>
-      <div className="flex justify-between mt-5 ">
+      <div className="flex justify-between mt-5 transition-transformm duration-150 ease-out hover:scale-150">
         <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <ChatAlt2Icon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+          <ChatAlt2Icon className="h-5 w-5 " />
           <p>{comments.length}</p>
         </div>
         <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <HeartIcon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+          <HeartIcon className="h-5 w-5" />
         </div>
         <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <SwitchHorizontalIcon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+          <SwitchHorizontalIcon className="h-5 w-5" />
         </div>
         <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <UploadIcon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+          <UploadIcon className="h-5 w-5" />
         </div>
       </div>
       {comments?.length > 0 && (

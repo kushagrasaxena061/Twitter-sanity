@@ -65,7 +65,7 @@ export default function TweetBox({setTweets}:Props) {
             ref={imageInputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="h-24 bg-black text-white w-full text-xl outline-none placeholder:text:xl"
+            className="h-24 bg-black w-full text-xl outline-none placeholder:text:xl"
             type="text"
             placeholder="What's Happening?"
           />

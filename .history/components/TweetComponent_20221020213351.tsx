@@ -60,10 +60,10 @@ function TweetComponent({ tweet }: Props) {
           <HeartIcon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
         </div>
         <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <SwitchHorizontalIcon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+          <SwitchHorizontalIcon className="h-5 w-5" />
         </div>
         <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <UploadIcon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+          <UploadIcon className="h-5 w-5" />
         </div>
       </div>
       {comments?.length > 0 && (

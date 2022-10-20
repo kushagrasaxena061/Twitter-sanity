@@ -21,8 +21,9 @@ function TweetComponent({ tweet }: Props) {
   useEffect(() => {
     refreshComments()
   },[])
+  //console.log(comments)
   return (
-    <div className="flex flex-col space-x-3 p-5 border-y border-gray-700">
+    <div className="flex flex-col space-x-3 p-5 border-y border-blue-100">
       <div className="flex space-x-3">
         <img
           className="h-10 w-10 object-cover rounded-full"
@@ -31,8 +32,8 @@ function TweetComponent({ tweet }: Props) {
         />
 
         <div>
-          <div className="flex items-center space-x-1 text-blue-400">
-            <p className="mr-1 font-bold ">Kushagra Saxena</p>
+          <div className="flex items-center space-x-1">
+            <p className="mr-1 font-bold">Kushagra Saxena</p>
             <p className="font-sm flex-none hidden lg:inline">
               @kushagrasaxena
             </p>
@@ -41,29 +42,29 @@ function TweetComponent({ tweet }: Props) {
               date={tweet._createdAt}
             />
           </div>
-          <p className="pt-1 text-white">{tweet.text}</p>
+          <p className="pt-1">{tweet.text}</p>
           {tweet.image && (
             <img
-              className="bg-gray-900 m-5 ml-0 mb-1 max-h-60 rounded-lg object-cover shadow-sm"
+              className="m-5 ml-0 mb-1 max-h-60 rounded-lg object-cover shadow-sm"
               src={tweet.image}
               alt=""
             />
           )}
         </div>
       </div>
-      <div className="flex justify-between mt-5 ">
-        <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <ChatAlt2Icon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+      <div className="flex justify-between mt-5">
+        <div className="flex cursor-pointer space-x-3 items-center text-gray-400">
+          <ChatAlt2Icon className="h-5 w-5" />
           <p>{comments.length}</p>
         </div>
-        <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <HeartIcon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+        <div className="flex cursor-pointer space-x-3 items-center text-gray-400">
+          <HeartIcon className="h-5 w-5" />
         </div>
-        <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <SwitchHorizontalIcon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+        <div className="flex cursor-pointer space-x-3 items-center text-gray-400">
+          <SwitchHorizontalIcon className="h-5 w-5" />
         </div>
-        <div className="flex cursor-pointer space-x-3 items-center text-gray-400 hover:text-blue-400">
-          <UploadIcon className="h-5 w-5 transition-transformm duration-150 ease-out hover:scale-150" />
+        <div className="flex cursor-pointer space-x-3 items-center text-gray-400">
+          <UploadIcon className="h-5 w-5" />
         </div>
       </div>
       {comments?.length > 0 && (
@@ -78,7 +79,7 @@ function TweetComponent({ tweet }: Props) {
               />
               <div>
                 <div className="flex items-center space-x-1">
-                  <p className="mr-2 font-bold">Kushagra</p>
+                  <p className="mr-2 font-bold">Kush</p>
                   <TimeAgo
                     className="text-sm text-gray-500"
                     date={comment._createdAt}

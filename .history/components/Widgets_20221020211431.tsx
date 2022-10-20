@@ -9,7 +9,7 @@ export default function Widgets() {
             <SearchCircleIcon className="h-5 w-5 text-gray-200" />
             <input type="text" placeholder="Search" className="flex-1 text-gray-200 outline-none bg-transparent"/>
         </div>
-        <div className="text-white">
+        <div className="bg-black">
         <TwitterTimelineEmbed sourceType="profile" screenName="Kushagra" options={{height:1000}}/>
         </div>
     </div>

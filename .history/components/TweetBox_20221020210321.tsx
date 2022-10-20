@@ -56,7 +56,7 @@ export default function TweetBox({setTweets}:Props) {
     <div className="flex space-x-2 p-5">
       <img
         className="h-14 w-14 object-cover rounded-full mt-4"
-        src="/images/images/Logo.jpeg"
+        src=""
         alt="no photo tweetbox"
       />
       <div className="flex flex-1 items-center pl-2 ">
@@ -65,11 +65,11 @@ export default function TweetBox({setTweets}:Props) {
             ref={imageInputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="h-24 bg-black text-white w-full text-xl outline-none placeholder:text:xl"
+            className="h-24 w-full text-xl outline-none placeholder:text:xl"
             type="text"
             placeholder="What's Happening?"
           />
-          <div className="flex items-center mt-5">
+          <div className="flex items-center ">
             <div className="flex flex-1 space-x-4 text-[#00ADED]">
               <PhotographIcon
                 onClick={() => setImageUrlBoxIsOpen(!imageUrlBoxIsOpen)}
@@ -92,14 +92,14 @@ export default function TweetBox({setTweets}:Props) {
             <form className="mt-5 flex rounded-lg bg-[#00ADED]/80 py-2 px-4">
               <input
                 ref={imageInputRef}
-                className="flex-1 bg-transparent p-2 text-blue-100 outline-none placeholder:text-blue-200"
+                className="flex-1 bg-transparent p-2 text-white outline-none placeholder:text-white"
                 type="text"
                 placeholder="Enter Image URL..."
               />
               <button
                 onClick={addImageToTweet}
                 type="submit"
-                className="font-bold text-blue-200"
+                className="font-bold text-white"
               >
                 Add Image
               </button>

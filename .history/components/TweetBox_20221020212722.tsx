@@ -65,11 +65,11 @@ export default function TweetBox({setTweets}:Props) {
             ref={imageInputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="h-24 bg-black text-white w-full text-xl outline-none placeholder:text:xl"
+            className="h-24 w-full text-xl outline-none placeholder:text:xl"
             type="text"
             placeholder="What's Happening?"
           />
-          <div className="flex items-center mt-5">
+          <div className="flex items-center ">
             <div className="flex flex-1 space-x-4 text-[#00ADED]">
               <PhotographIcon
                 onClick={() => setImageUrlBoxIsOpen(!imageUrlBoxIsOpen)}
@@ -83,7 +83,7 @@ export default function TweetBox({setTweets}:Props) {
             <button
               onClick={handleSubmit}
               disabled={!input}
-              className="bg-[#00ADED] px-5 py-2 font-bold disabled:opacity-40 text-white rounded-full"
+              className="bg-[#00ADED] px-5 py-2 font-bold disabled:opacity-40 text-blue-200 rounded-full"
             >
               Tweet
             </button>
